@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[twocolumn]{article}
 
 \usepackage{arxiv}
 
@@ -8,6 +8,7 @@
 \usepackage{url}            % simple URL typesetting
 \usepackage{booktabs}       % professional-quality tables
 \usepackage{amsfonts}       % blackboard math symbols
+\usepackage{amsmath}
 \usepackage{nicefrac}       % compact symbols for 1/2, etc.
 \usepackage{microtype}      % microtypography
 \usepackage{cleveref}       % smart cross-referencing
@@ -15,13 +16,14 @@
 \usepackage{graphicx}
 \usepackage{natbib}
 \usepackage{doi}
+\usepackage{capt-of}
 
 \title{A template for the \emph{arxiv} style}
 
 % Here you can change the date presented in the paper title
 %\date{September 9, 1985}
 % Or remove it
-%\date{}
+\date{}
 
 \newif\ifuniqueAffiliation
 % Comment to use multiple affiliations variant of author block 
@@ -91,16 +93,27 @@ pdfkeywords={First keyword, Second keyword, More},
 }
 
 \begin{document}
-\maketitle
+\twocolumn[{
+  \begin{@twocolumnfalse}
 
-\begin{abstract}
-	\lipsum[1]
-\end{abstract}
+	\maketitle
 
+	\begin{center}
+		\includegraphics[width=0.85\textwidth]{figures/sampleteaser.pdf}
+		\captionof{figure}{Some caption.}
+	    \label{fig:teaser}
+	\end{center}
 
-% keywords can be removed
-\keywords{First keyword \and Second keyword \and More}
+	\vspace{1em}
 
+	\begin{abstract}
+		\lipsum[1]
+		\keywords{First keyword \and Second keyword \and More}
+	\end{abstract}
+
+  \end{@twocolumnfalse}
+  \vspace{1em}
+}]
 
 \section{Introduction}
 \lipsum[2]
@@ -110,12 +123,16 @@ pdfkeywords={First keyword, Second keyword, More},
 \section{Headings: first level}
 \label{sec:headings}
 
-\lipsum[4] See Section \ref{sec:headings}.
+\lipsum[4] See Section \ref{sec:headings}. See Figure \ref{fig:teaser}.
 
 \subsection{Headings: second level}
 \lipsum[5]
 \begin{equation}
-	\xi _{ij}(t)=P(x_{t}=i,x_{t+1}=j|y,v,w;\theta)= {\frac {\alpha _{i}(t)a^{w_t}_{ij}\beta _{j}(t+1)b^{v_{t+1}}_{j}(y_{t+1})}{\sum _{i=1}^{N} \sum _{j=1}^{N} \alpha _{i}(t)a^{w_t}_{ij}\beta _{j}(t+1)b^{v_{t+1}}_{j}(y_{t+1})}}
+	\begin{split}
+	\xi _{ij}(t)
+	&=P(x_{t}=i,x_{t+1}=j|y,v,w;\theta)\\
+	&= {\frac {\alpha _{i}(t)a^{w_t}_{ij}\beta _{j}(t+1)b^{v_{t+1}}_{j}(y_{t+1})}{\sum _{i=1}^{N} \sum _{j=1}^{N} \alpha _{i}(t)a^{w_t}_{ij}\beta _{j}(t+1)b^{v_{t+1}}_{j}(y_{t+1})}}
+	\end{split}
 \end{equation}
 
 \subsubsection{Headings: third level}
